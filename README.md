@@ -1,4 +1,7 @@
 # IPFetcher
+Você pode escolher o idioma do README:
+- [Português (BR)](README.md)
+- [English (EN)](README-EN.md)
 
 O IPFetcher é uma ferramenta prática e eficiente projetada para validar a resposta dos endereços IP diretamente em uma aplicação.
 
