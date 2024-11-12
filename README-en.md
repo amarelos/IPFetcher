@@ -4,6 +4,19 @@ IPFetcher is a practical and efficient tool designed to validate the response of
 
 To use it, you need to search for a specific range of target IPs and compile a list of these addresses. The goal is to check if the IPs have active web services on ports 80 or 443. Additionally, if an application is found, the tool will allow you to test access through a specific path.
 
+## Installation
+
+Make sure you have `curl` installed on your system:
+
+```bash
+sudo apt-get install curl  # For Debian/Ubuntu
+```
+## Download the script:
+```
+curl -O https://raw.githubusercontent.com/yourusername/yourrepo/master/IPFetcher.sh
+chmod +x IPFetcher.sh
+```
+
 ## Usage
 
 Simple execution:<br>
