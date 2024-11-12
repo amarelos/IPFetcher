@@ -4,6 +4,19 @@ O IPFetcher é uma ferramenta prática e eficiente projetada para validar a resp
 
 Para utilizá-la, é necessário realizar uma busca por um intervalo específico de IPs do alvo e compilar uma lista com esses endereços. O objetivo é verificar se os IPs contêm serviços web ativos nas portas 80 ou 443. Além disso, caso uma aplicação seja encontrada, a ferramenta permitirá testar o acesso por meio de um caminho específico.
 
+## Instalação
+
+Certifique-se de que você tem o `curl` instalado no seu sistema:
+
+```bash
+sudo apt-get install curl  # Para Debian/Ubuntu
+```
+
+## Download e preparação
+```
+curl -O https://raw.githubusercontent.com/seuusuario/seurepositorio/master/IPFetcher.sh
+chmod +x IPFetcher.sh
+```
 ## Utilização
 
 Execução simples.<br>
