@@ -1,5 +1,7 @@
 # IPFetcher
-
+You can choose the README language:
+- [Português (BR)](README.md)
+- [English (EN)](README-en.md)
 IPFetcher is a practical and efficient tool designed to validate the response of IP addresses directly in an application.
 
 To use it, you need to search for a specific range of target IPs and compile a list of these addresses. The goal is to check if the IPs have active web services on ports 80 or 443. Additionally, if an application is found, the tool will allow you to test access through a specific path.
