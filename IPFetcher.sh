@@ -1,6 +1,6 @@
 #!/bin/bash
 #-Metadata----------------------------------------------------#
-#  Filename: IPFetcher (v1.0)            (update: 2024-11-14) #
+#  Filename: IPFetcher (v1.2)            (update: 2024-11-13) #
 #-Info--------------------------------------------------------#
 #  Testa se o host responde direto a aplicação.               #
 #-Author(s)---------------------------------------------------#
