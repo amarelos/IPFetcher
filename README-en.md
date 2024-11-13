@@ -39,18 +39,23 @@ Forced execution via HTTPS, setting a maximum timeout:<br>
 Forced execution via HTTPS, specifying ports:<br>
 `./IPFetcher.sh -iL ip.txt -iS --ports 443,8080,8088`
 
+Forced execution via HTTPS, using Top Portas.<br>
+`./IPFetcher.sh -iL ip.txt -iS --top-ports 5`
+`./IPFetcher.sh -iL ip.txt -iS --top-ports=5`
+
 ```
 Options:
-Usage: ./IPFetcher.sh -iL <file_with_ips> [-iS] [-iV] [-P <path>] [-U <url>] [-t <timeout>] [-v|--verbose] [-sc <status_codes>] [--ports <ports>] [-iP]
--iL <file_with_ips> : Text file containing the IPs.
--iS                 : Makes HTTPS requests.
--iV                 : Replaces the hostname in the URL with the IP (must be used with -U).
--P <path>          : The path to be used in requests, enclosed in quotes.
--U <url>           : A complete URL to make requests (e.g., https://lab.net/admin).
--sc <status_codes> : Filters responses to show only the specified statuses (e.g., 200,404).
--t <timeout>       : Maximum time in seconds for the request. Default time is 30 seconds.
--v|--verbose        : Enables detailed information display.
--h|--help          : Displays this help message.
---ports <ports>    : One or more comma-separated ports to test (e.g., 80,443,8080).
--iP                 : Uses default ports (80, 443, 8080, 8888, 8443) for the IPs when not specified with --ports.
+    Usage: ./IPFetcher.sh -iL <file_with_ips> [-iS] [-iV] ​​[-P <path>] [-U <url>] [-t <timeout>] [-v|-- verbose] [ -sc <status_codes>] [--ports <ports>] [-iP]
+        -iL <file_with_ips> : Text file containing IPs.
+        -iS: Makes HTTPS requests.
+        -iV : Replaces the URL hostname with the IP (must be used with -U).
+        -P <path>: The path to be used in requests, and filled inside the quotation marks.
+        -U <url>: A complete URL to make requests (ex: https://lab.net/admin).
+        -sc <status_codes> : Filters returns to show only specified statuses (ex: 200,404).
+        -t <timeout> : Maximum time in seconds for the request. Default time 30 seconds.
+        -v|--verbose : Enables the display of detailed information.
+        -h|--help : Display this help.
+        --ports <ports> : One or more comma-separated ports to test (e.g. 80,443,8080).
+        --top-port <number>: number of top ports to test. Ex: --top-port 5 or --top-port=5
+        -iP : Use standard ports (443 8080 8081) for IPs when not specified with --ports.
 ```
