@@ -40,18 +40,23 @@ Execução forçada via HTTPS, definido um tempo limite maximo.<br>
 Execução forçada via HTTPS, definido portas.<br>
 `./IPFetcher.sh -iL ip.txt -iS --ports 443,8080,8088`
 
+Execução forçada via HTTPS, utilizando o Top Portas.<br>
+`./IPFetcher.sh -iL ip.txt -iS --top-ports 5`
+`./IPFetcher.sh -iL ip.txt -iS --top-ports=5`
+
 ```
 Opções:
-    Uso: ./IPFetcher.sh -iL <file_with_ips> [-iS] [-iV] [-P <path>] [-U <url>] [-t <timeout>] [-v|--verbose] [-sc <status_codes>] [--ports <ports>] [-iP]"
-    -iL <file_with_ips> : Arquivo de texto contendo os IPs."
-    -iS                 : Realiza requisições HTTPS."
-    -iV                 : Substitui o hostname da URL pelo IP (deve ser usado com -U)."
-    -P <path>          : O caminho a ser usado nas requisições, e preenchido dentro de aspas."
-    -U <url>           : Uma URL completa para fazer requisições (ex: https://lab.net/admin)."
-    -sc <status_codes> : Filtra os retornos para mostrar apenas os status especificados (ex: 200,404)."
-    -t <timeout>       : Tempo máximo em segundos para a requisição. Tempo padrão 30 segundos."
-    -v|--verbose        : Habilita a exibição de informações detalhadas."
-    -h|--help          : Exibe esta ajuda."
-    --ports <ports>    : Uma ou mais portas separadas por vírgula para testar (ex: 80,443,8080)."
-    -iP                 : Utiliza portas padrão (80, 443, 8080, 8888, 8443) para os IPs quando não especificadas com --ports."
+    Uso: ./IPFetcher.sh -iL <file_with_ips> [-iS] [-iV] [-P <path>] [-U <url>] [-t <timeout>] [-v|--verbose] [-sc <status_codes>] [--ports <ports>] [-iP]
+        -iL <file_with_ips> : Arquivo de texto contendo os IPs.
+        -iS                 : Realiza requisições HTTPS.
+        -iV                 : Substitui o hostname da URL pelo IP (deve ser usado com -U).
+        -P <path>          : O caminho a ser usado nas requisições, e preenchido dentro de aspas.
+        -U <url>           : Uma URL completa para fazer requisições (ex: https://lab.net/admin).
+        -sc <status_codes> : Filtra os retornos para mostrar apenas os status especificados (ex: 200,404).
+        -t <timeout>       : Tempo máximo em segundos para a requisição. Tempo padrão 30 segundos.
+        -v|--verbose        : Habilita a exibição de informações detalhadas.
+        -h|--help          : Exibe esta ajuda.
+        --ports <ports>    : Uma ou mais portas separadas por vírgula para testar (ex: 80,443,8080).
+        --top-port <number>: número de portas principais a serem testadas. Ex: --top-port 5 ou --top-port=5
+        -iP                 : Utiliza portas padrão (443 8080 8081) para os IPs quando não especificadas com --ports.
 ```
