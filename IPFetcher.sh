@@ -9,7 +9,8 @@
 #  MIT License ~ http://opensource.org/licenses/MIT           #
 #-------------------------------------------------------------#
 
-
+# Lista padrão de portas
+default_ports=(443 8080 8088 8081 8082 8083 8181 8282 8443 8888 3000 5000 5001 5002 5200 7000 8000 4000 3001 27017)
 
 show_help() {
     echo "Uso: $0 -iL <file_with_ips> [-iS] [-iV] [-P <path>] [-U <url>] [-t <timeout>] [-v|--verbose] [-sc <status_codes>] [--ports <ports>] [-iP]"
@@ -23,7 +24,8 @@ show_help() {
     echo "   -v|--verbose        : Habilita a exibição de informações detalhadas."
     echo "   -h|--help          : Exibe esta ajuda."
     echo "   --ports <ports>    : Uma ou mais portas separadas por vírgula para testar (ex: 80,443,8080)."
-    echo "   -iP                 : Utiliza portas padrão (80, 443, 8080, 8888, 8443) para os IPs quando não especificadas com --ports."
+    echo "   --top-port <number>: número de portas principais a serem testadas. Ex: --top-port 5 ou --top-port=5"
+    echo "   -iP                 : Utiliza portas padrão (443 8080 8081) para os IPs quando não especificadas com --ports."
     exit 1
 }
 
@@ -43,6 +45,7 @@ verbose=false
 status_codes=()  # Array para armazenar os códigos de status desejados
 ports=()  # Array para armazenar as portas
 valport=false
+top_port=0
 
 while [[ "$1" != "" ]]; do
     case $1 in
@@ -70,13 +73,30 @@ while [[ "$1" != "" ]]; do
         --ports ) shift
                   IFS=',' read -r -a ports <<< "$1" && valport=true  # Lê lista de portas separadas por vírgula
                   ;;
+        --top-port )
+            shift
+            if [[ "$1" =~ ^[0-9]+$ ]]; then
+                top_port="$1" && valport=true
+            else
+                echo "Erro: O valor para --top-port deve ser um número."
+                exit 1
+            fi
+            ;;
+        --top-port=*)
+            top_port="${1#*=}" && valport=true
+            if ! [[ "$top_port" =~ ^[0-9]+$ ]]; then
+                echo "Erro: O valor para --top-port deve ser um número."
+                exit 1
+            fi
+            ;;
         -iP ) 
               valport=true
               # Define portas padrão se `--ports` não foi especificado
               if [[ ${#ports[@]} -eq 0 ]]; then
-                  ports=(80 443 8080 8888 8443)
+                  ports=(443 8080 8081)
               fi
               ;;
+
         -h | --help ) show_help
                       ;;
         * ) echo "Parâmetro inválido: $1"
@@ -95,6 +115,17 @@ fi
 if [[ -z "$input_file" || ! -f "$input_file" ]]; then
     echo "Arquivo inválido ou não especificado com -iL."
     exit 1
+fi
+
+
+# Ajustando a lista de portas com base na escolha do usuário.
+if [[ $top_port -gt 0 ]]; then
+    if [[ $top_port -gt ${#default_ports[@]} ]]; then
+        echo "Número de portas solicitado ($top_port) é maior que o número de portas disponíveis (${#default_ports[@]}). Usando todas as portas disponíveis."
+        ports=("${default_ports[@]}")
+    else
+        ports=("${default_ports[@]:0:$top_port}")  # Pega apenas as 'top_port' primeiras portas
+    fi
 fi
 
 # Lendo o arquivo de IPs
